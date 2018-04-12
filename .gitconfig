@@ -1,0 +1,18 @@
+[user]
+	name = Baruch Even
+
+[include]
+	path = .gitconfig.local
+
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+	ui = true
+[alias]
+	last = cat-file commit HEAD
+
+[core]
+        excludesfile = ~/.gitignore
+[push]
+	default = simple
