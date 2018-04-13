@@ -188,7 +188,7 @@ exec_always "xrandr --output eDP-1 --auto ; xrandr --output DP-1 --auto --mode 2
 exec compton -f
 
 # unclutter to hide the mouse after inactivity
-exec unclutter
+exec unclutter -noevents
 
 exec --no-startup-id nm-applet
 exec gxkb
