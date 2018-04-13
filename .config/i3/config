@@ -191,4 +191,5 @@ exec compton -f
 exec unclutter -noevents
 
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 exec gxkb
