@@ -173,7 +173,8 @@ bar {
         status_command i3status
 }
 
-bindsym $mod+shift+x exec i3lock
+bindsym $mod+shift+x exec i3lock-fancy
+exec xautolock -time 15 -locker i3lock-fancy -corners '----'
 
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec "amixer sset Master  '3%+'; pkill -SIGUSR1 i3status"
