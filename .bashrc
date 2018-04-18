@@ -160,4 +160,6 @@ fi
 export PATH=~/.gopath/bin:~/.local/bin:$PATH
 alias glg='git log --graph --pretty=format:'\''%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%aN%Creset'\'' --abbrev-commit --date=relative'
 
+[ -e /etc/profile.d/undistract-me.sh ] && . /etc/profile.d/undistract-me.sh
+
 [ -e .bashrc.local ] && . .bashrc.local
