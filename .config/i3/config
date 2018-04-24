@@ -104,6 +104,11 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
+# mpris/spotify player control
+bindsym $mod+greater exec "~/.local/bin/playerctl next"
+bindsym $mod+less exec "~/.local/bin/playerctl previous"
+bindsym $mod+slash exec "~/.local/bin/playerctl play-pause"
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
