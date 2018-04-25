@@ -151,7 +151,19 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+set $lock i3lock-fancy
+set $mode_system System (l) lock, (e) logout, (h) hibernate
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $lock, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym h exec --no-startup-id $lock, exec --no-startup-id sudo hibernate, mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "$mode_system"
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -186,9 +198,9 @@ bar {
         status_command i3status
 }
 
-bindsym $mod+shift+x exec i3lock-fancy
+bindsym $mod+shift+x exec $lock
 exec xautolock -time 15 -locker i3lock-fancy -corners '----' -notify 90 -notifier "notify-send -t 89000 -- 'LOCKING screen in 90 seconds'"
-exec /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 
 # Multimedia keys
 bindsym $mod+KP_Add exec "amixer sset Master  '3%+'; pkill -SIGUSR1 i3status"
@@ -202,15 +214,15 @@ bindsym XF86AudioMicMute     exec "amixer sset Capture toggle; pkill -SIGUSR1 i3
 exec_always "xrandr --output eDP-1 --auto ; xrandr --output DP-1 --auto --mode 2560x1440; xrandr --output DP-1 --right-of eDP-1"
 
 # compton is a compositor for opacity
-exec compton -f
+exec --no-startup-id compton -f
 
 # unclutter to hide the mouse after inactivity
-exec unclutter -noevents
+exec --no-startup-if unclutter -noevents
 
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec gxkb
-exec redshift -l geoclue2
+exec --no-startup-id gxkb
+exec --no-startup-id redshift -l geoclue2
 
 # Assign windows
 for_window [class="Spotify"] move to scratchpad, scratchpad show
