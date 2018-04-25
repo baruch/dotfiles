@@ -213,4 +213,4 @@ exec gxkb
 exec redshift -l geoclue2
 
 # Assign windows
-for_window [class="Spotify"] move to scratchpad
+for_window [class="Spotify"] move to scratchpad, scratchpad show
