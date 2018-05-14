@@ -223,6 +223,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id gxkb
 exec --no-startup-id redshift -l geoclue2
+exec --no-startup-id ~/.local/bin/setup_xkb.sh
 
 # Assign windows
 for_window [class="Spotify"] move to scratchpad, scratchpad show
