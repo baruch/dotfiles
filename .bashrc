@@ -162,4 +162,13 @@ alias glg='git log --graph --pretty=format:'\''%Cred%h%Creset %C(yellow)%d%Crese
 
 [ -e /etc/profile.d/undistract-me.sh ] && . /etc/profile.d/undistract-me.sh
 
+pwait() {
+    if [ -z "$1" ]; then
+        echo "pwait <pid>"
+        return
+    fi
+
+    while [ -d /proc/$1 ]; do sleep 1; done
+}
+
 [ -e .bashrc.local ] && . .bashrc.local
